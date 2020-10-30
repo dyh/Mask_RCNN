@@ -72,7 +72,9 @@ class BalloonConfig(Config):
     NUM_CLASSES = 1 + 1  # Background + balloon
 
     # Number of training steps per epoch
-    STEPS_PER_EPOCH = 100
+    
+    # STEPS_PER_EPOCH = 100
+    STEPS_PER_EPOCH = 10
 
     # Skip detections with < 90% confidence
     DETECTION_MIN_CONFIDENCE = 0.9
@@ -196,10 +198,17 @@ def train(model):
     # COCO trained weights, we don't need to train too long. Also,
     # no need to train all layers, just the heads should do it.
     print("Training network heads")
+
+    # model.train(dataset_train, dataset_val,
+    #             learning_rate=config.LEARNING_RATE,
+    #             epochs=30,
+    #             layers='heads')
+
     model.train(dataset_train, dataset_val,
                 learning_rate=config.LEARNING_RATE,
-                epochs=30,
+                epochs=2,
                 layers='heads')
+
 
 
 def color_splash(image, mask):
