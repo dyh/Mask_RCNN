@@ -34,6 +34,9 @@ import datetime
 import numpy as np
 import skimage.draw
 
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"   # see issue #152
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
+
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
 
