@@ -73,8 +73,8 @@ class BalloonConfig(Config):
 
     # Number of training steps per epoch
     
-    # STEPS_PER_EPOCH = 100
-    STEPS_PER_EPOCH = 10
+    STEPS_PER_EPOCH = 100
+    # STEPS_PER_EPOCH = 10
 
     # Skip detections with < 90% confidence
     DETECTION_MIN_CONFIDENCE = 0.9
@@ -199,15 +199,15 @@ def train(model):
     # no need to train all layers, just the heads should do it.
     print("Training network heads")
 
-    # model.train(dataset_train, dataset_val,
-    #             learning_rate=config.LEARNING_RATE,
-    #             epochs=30,
-    #             layers='heads')
-
     model.train(dataset_train, dataset_val,
                 learning_rate=config.LEARNING_RATE,
-                epochs=2,
+                epochs=30,
                 layers='heads')
+
+    # model.train(dataset_train, dataset_val,
+    #             learning_rate=config.LEARNING_RATE,
+    #             epochs=2,
+    #             layers='heads')
 
 
 
